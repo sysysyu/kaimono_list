@@ -2,10 +2,10 @@
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset128 HiraginoSans-W3;}
 {\colortbl;\red255\green255\blue255;\red77\green80\blue85;\red236\green241\blue247;\red0\green0\blue0;
 \red111\green14\blue195;\red14\green110\blue109;\red24\green112\blue43;\red191\green28\blue37;\red164\green69\blue11;
-}
+\red107\green0\blue1;\red35\green22\blue178;}
 {\*\expandedcolortbl;;\cssrgb\c37255\c38824\c40784;\cssrgb\c94118\c95686\c97647;\cssrgb\c0\c0\c0;
 \cssrgb\c51765\c18824\c80784;\cssrgb\c0\c50196\c50196;\cssrgb\c9412\c50196\c21961;\cssrgb\c80392\c19216\c19216;\cssrgb\c70980\c34902\c3137;
-}
+\cssrgb\c50196\c0\c0;\cssrgb\c18824\c18824\c75294;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \deftab720
 \pard\pardeftab720\partightenfactor0
@@ -269,6 +269,92 @@
 \cb3     );\cb1 \
 \cb3 \};\cb1 \
 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 /**\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * 
+\f1 \'83\'4a\'83\'5e\'83\'4a\'83\'69\'82\'f0\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'82\'c9\'95\'cf\'8a\'b7\'82\'b7\'82\'e9\'83\'77\'83\'8b\'83\'70\'81\'5b\'8a\'d6\'90\'94
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * @param \{string\} str - 
+\f1 \'95\'cf\'8a\'b7\'82\'b7\'82\'e9\'95\'b6\'8e\'9a\'97\'f1
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * @returns \{string\} 
+\f1 \'95\'cf\'8a\'b7\'82\'b3\'82\'ea\'82\'bd\'95\'b6\'8e\'9a\'97\'f1
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  */\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 const\cf0 \strokec4  convertKatakanaToHiragana = (str) => \{\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf5 \strokec5 return\cf0 \strokec4  str.replace(\cf10 \strokec10 /[\\u30a1-\\u30f6]/\cf5 \strokec5 g\cf0 \strokec4 , \cf5 \strokec5 function\cf0 \strokec4 (match) \{\cb1 \
+\cb3         \cf5 \strokec5 return\cf0 \strokec4  \cf6 \strokec6 String\cf0 \strokec4 .fromCharCode(match.charCodeAt(\cf9 \strokec9 0\cf0 \strokec4 ) - \cf11 \strokec11 0x60\cf0 \strokec4 );\cb1 \
+\cb3     \});\cb1 \
+\cb3 \};\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 /**\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * 
+\f1 \'93\'fa\'96\'7b\'8c\'ea\'83\'65\'83\'4c\'83\'58\'83\'67\'82\'f0\'83\'7d\'81\'5b\'83\'57\'97\'70\'82\'c9\'90\'b3\'8b\'4b\'89\'bb\'82\'b7\'82\'e9\'83\'77\'83\'8b\'83\'70\'81\'5b\'8a\'d6\'90\'94
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * 
+\f1 \'83\'4a\'83\'5e\'83\'4a\'83\'69\'82\'f0\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'82\'c9\'95\'cf\'8a\'b7\'82\'b5\'81\'41\'93\'c1\'92\'e8\'82\'cc\'8a\'bf\'8e\'9a\'82\'f0\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'82\'c9\'95\'cf\'8a\'b7\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * @param \{string\} str - 
+\f1 \'90\'b3\'8b\'4b\'89\'bb\'82\'b7\'82\'e9\'95\'b6\'8e\'9a\'97\'f1
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  * @returns \{string\} 
+\f1 \'90\'b3\'8b\'4b\'89\'bb\'82\'b3\'82\'ea\'82\'bd\'95\'b6\'8e\'9a\'97\'f1
+\f0 \cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2  */\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \cb3 \strokec5 const\cf0 \strokec4  normalizeJapaneseTextForMerging = (str) => \{\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf5 \strokec5 let\cf0 \strokec4  normalized = str;\cb1 \
+\
+\cb3     \cf2 \strokec2 // 1. 
+\f1 \'83\'4a\'83\'5e\'83\'4a\'83\'69\'82\'f0\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'82\'c9\'95\'cf\'8a\'b7
+\f0 \cf0 \cb1 \strokec4 \
+\cb3     normalized = convertKatakanaToHiragana(normalized);\cb1 \
+\
+\cb3     \cf2 \strokec2 // 2. 
+\f1 \'93\'c1\'92\'e8\'82\'cc\'8a\'bf\'8e\'9a\'82\'f0\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'82\'c9\'95\'cf\'8a\'b7
+\f0 \cf0 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 // 
+\f1 \'92\'8d\'88\'d3
+\f0 : 
+\f1 \'82\'b1\'82\'ea\'82\'cd\'8a\'ae\'91\'53\'82\'c8\'8a\'bf\'8e\'9a\'95\'cf\'8a\'b7\'82\'c5\'82\'cd\'82\'a0\'82\'e8\'82\'dc\'82\'b9\'82\'f1\'81\'42\'88\'ea\'94\'ca\'93\'49\'82\'c8\'93\'c7\'82\'dd\'95\'fb\'82\'f0\'83\'4a\'83\'6f\'81\'5b\'82\'b7\'82\'e9\'8c\'c0\'92\'e8\'93\'49\'82\'c8\'91\'ce\'89\'9e\'82\'c5\'82\'b7\'81\'42
+\f0 \cf0 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 // 
+\f1 \'97\'e1
+\f0 : 
+\f1 \'81\'75\'96\'cb\'81\'76\'82\'f0\'81\'75\'82\'df\'82\'f1\'81\'76\'82\'c9\'95\'cf\'8a\'b7
+\f0 \cf0 \cb1 \strokec4 \
+\cb3     normalized = normalized.replace(\cf7 \strokec7 '
+\f1 \'96\'cb
+\f0 '\cf0 \strokec4 , \cf7 \strokec7 '
+\f1 \'82\'df\'82\'f1
+\f0 '\cf0 \strokec4 );\cb1 \
+\cb3     \cf2 \strokec2 // 
+\f1 \'95\'4b\'97\'76\'82\'c9\'89\'9e\'82\'b6\'82\'c4\'91\'bc\'82\'cc\'8a\'bf\'8e\'9a
+\f0 -
+\f1 \'82\'d0\'82\'e7\'82\'aa\'82\'c8\'95\'cf\'8a\'b7\'83\'8b\'81\'5b\'83\'8b\'82\'f0\'92\'c7\'89\'c1\'82\'c5\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 \cf0 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 // 
+\f1 \'97\'e1
+\f0 : normalized = normalized.replace('
+\f1 \'96\'ec\'8d\'d8
+\f0 ', '
+\f1 \'82\'e2\'82\'b3\'82\'a2
+\f0 ');\cf0 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 // 
+\f1 \'97\'e1
+\f0 : normalized = normalized.replace('
+\f1 \'97\'91
+\f0 ', '
+\f1 \'82\'bd\'82\'dc\'82\'b2
+\f0 ');\cf0 \cb1 \strokec4 \
+\
+\cb3     \cf5 \strokec5 return\cf0 \strokec4  normalized;\cb1 \
+\cb3 \};\cb1 \
+\
 \
 \pard\pardeftab720\partightenfactor0
 \cf2 \cb3 \strokec2 // History Modal Component\cf0 \cb1 \strokec4 \
@@ -288,7 +374,7 @@
 \cb3         ? historyItems.filter(item => item.tabId === selectedTabId)\cb1 \
 \cb3         : historyItems; \cf2 \strokec2 // If no tab is selected, show all history (for "All History" option)\cf0 \cb1 \strokec4 \
 \
-\cb3     \cf2 \strokec2 // Group filtered history by month and then by memo text\cf0 \cb1 \strokec4 \
+\cb3     \cf2 \strokec2 // Group filtered history by month and then by memo text (normalized)\cf0 \cb1 \strokec4 \
 \cb3     \cf5 \strokec5 const\cf0 \strokec4  groupedAndMergedHistory = filteredHistoryItems.reduce((acc, item) => \{\cb1 \
 \cb3         \cf5 \strokec5 const\cf0 \strokec4  date = \cf5 \strokec5 new\cf0 \strokec4  \cf6 \strokec6 Date\cf0 \strokec4 (item.checkedDate);\cb1 \
 \cb3         \cf5 \strokec5 const\cf0 \strokec4  yearMonth = \cf7 \strokec7 `\cf0 \strokec4 $\{date.getFullYear()\}
@@ -301,12 +387,12 @@
 \cb3             acc[yearMonth] = \{\}; \cf2 \strokec2 // Initialize with an object for memo texts\cf0 \cb1 \strokec4 \
 \cb3         \}\cb1 \
 \
-\cb3         \cf2 \strokec2 // Use text as key for merging for display total count\cf0 \cb1 \strokec4 \
-\cb3         \cf5 \strokec5 const\cf0 \strokec4  memoKey = item.text;\cb1 \
-\
+\cb3         \cf2 \strokec2 // Use normalized text as key for merging\cf0 \cb1 \strokec4 \
+\cb3         \cf5 \strokec5 const\cf0 \strokec4  memoKey = normalizeJapaneseTextForMerging(item.text); \cf2 \strokec2 // Use the new normalization function\cf0 \cb1 \strokec4 \
+\cb3         \cb1 \
 \cb3         \cf5 \strokec5 if\cf0 \strokec4  (!acc[yearMonth][memoKey]) \{\cb1 \
 \cb3             acc[yearMonth][memoKey] = \{\cb1 \
-\cb3                 text: item.text,\cb1 \
+\cb3                 text: item.text, \cf2 \strokec2 // Keep original text for display or use normalized: memoKey\cf0 \cb1 \strokec4 \
 \cb3                 count: \cf9 \strokec9 0\cf0 \strokec4 ,\cb1 \
 \cb3                 latestDate: item.checkedDate \cf2 \strokec2 // Store the latest date for sorting if needed\cf0 \cb1 \strokec4 \
 \cb3             \};\cb1 \
@@ -598,7 +684,7 @@
 \cb3                 position: newPosition,\cb1 \
 \cb3                 createdAt: \cf5 \strokec5 new\cf0 \strokec4  \cf6 \strokec6 Date\cf0 \strokec4 ().toISOString()\cb1 \
 \cb3             \});\cb1 \
-\cb3             console.log(\cf7 \strokec7 "Input area added for tab: "\cf0 \strokec4 , activeInputAreaId);\cb1 \
+\cb3             console.log(\cf7 \strokec7 "Input area added for tab: "\cf0 \strokec4 , activeTabId);\cb1 \
 \cb3         \} \cf5 \strokec5 catch\cf0 \strokec4  (e) \{\cb1 \
 \cb3             console.error(\cf7 \strokec7 "Error adding input area: "\cf0 \strokec4 , e);\cb1 \
 \cb3         \}\cb1 \
@@ -659,7 +745,7 @@
 \cb3     \}\cb1 \
 \
 \cb3     \cf5 \strokec5 return\cf0 \strokec4  (\cb1 \
-\cb3         <div className=\cf7 \strokec7 "min-h-screen flex flex-col"\cf0 \strokec4 >\cb1 \
+\cb3         <div className=\cf7 \strokec7 "min-h-screen flex flex-col font-inter"\cf0 \strokec4 > \{\cf2 \strokec2 /* Removed bg-gray-100 here */\cf0 \strokec4 \}\cb1 \
 \cb3             \{\cf2 \strokec2 /* 
 \f1 \'83\'77\'83\'62\'83\'5f\'81\'5b
 \f0  */\cf0 \strokec4 \}\cb1 \
@@ -844,12 +930,14 @@
 \f1 \'82\'c5\'83\'89\'83\'62\'83\'76\'82\'b5\'82\'c4\'83\'47\'83\'4e\'83\'58\'83\'7c\'81\'5b\'83\'67
 \f0 \cf0 \cb1 \strokec4 \
 \pard\pardeftab720\partightenfactor0
-\cf5 \cb3 \strokec5 export\cf0 \strokec4  \cf5 \strokec5 default\cf0 \strokec4  \cf5 \strokec5 function\cf0 \strokec4  \cf6 \strokec6 ProvidedApp\cf0 \strokec4 () \{\cb1 \
+\cf5 \cb3 \strokec5 const\cf0 \strokec4  root = \cf6 \strokec6 ReactDOM\cf0 \strokec4 .createRoot(document.getElementById(\cf7 \strokec7 'root'\cf0 \strokec4 ));\cb1 \
 \pard\pardeftab720\partightenfactor0
-\cf0 \cb3     \cf5 \strokec5 return\cf0 \strokec4  (\cb1 \
+\cf0 \cb3 root.render(\cb1 \
+\cb3     <\cf6 \strokec6 React\cf0 \strokec4 .\cf6 \strokec6 StrictMode\cf0 \strokec4 >\cb1 \
 \cb3         <\cf6 \strokec6 FirebaseProvider\cf0 \strokec4 >\cb1 \
 \cb3             <\cf6 \strokec6 App\cf0 \strokec4  />\cb1 \
 \cb3         </\cf6 \strokec6 FirebaseProvider\cf0 \strokec4 >\cb1 \
-\cb3     );\cb1 \
-\cb3 \}\cb1 \
+\cb3     </\cf6 \strokec6 React\cf0 \strokec4 .\cf6 \strokec6 StrictMode\cf0 \strokec4 >\cb1 \
+\cb3 );\cb1 \
+\
 }
